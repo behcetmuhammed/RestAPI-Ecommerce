@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity //Entity
 @Table(name = "categories") //Bu entityi SQL'de 'categories' tablosuyla eşleştir.
 @Data //Oto olarak getter ve setter ları yazar
@@ -20,5 +22,8 @@ public class Category {
     @NotNull
     @Column(name = "category_name")
     private String name;
+
+    @OneToMany(mappedBy = "category") //Buradaki category, Category sınıfınfaki private Category -> "category" <- den geliyor
+    private List<Product> products;
 
 }

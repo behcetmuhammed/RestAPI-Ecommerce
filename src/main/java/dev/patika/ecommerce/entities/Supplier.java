@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity //Entity
 @Table(name = "suppliers") //Bu entityi SQL'de 'categories' tablosuyla eşleştir.
 @Data //Oto olarak getter ve setter ları yazar
@@ -29,4 +31,7 @@ public class Supplier {
 
     @Column(name = "supplier_mail")
     private String contactMail; //mail
+
+    @OneToMany(mappedBy = "supplier") //Buradaki supplier, Supplier sınıfınfaki private Supplier -> "supplier" <- den geliyor
+    private List<Product> products;
 }
